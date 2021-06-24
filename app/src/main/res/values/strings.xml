@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MotionLayout</string>
+    <string name="rocketspace">rocketSpace</string>
+    <string name="backgroundspace">backgroundSpace</string>
+</resources>

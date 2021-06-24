@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@id/start">
+
+        <!-- Rocket initial state -->
+
+        <Constraint android:id="@+id/ivRocket"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"
+            android:rotation="-45"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="80dp">
+
+            <Layout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </Constraint>
+
+        <!-- Space Background initial state -->
+
+        <Constraint android:id="@+id/bgSpace">
+
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@id/end">
+
+        <!-- Rocket finished state -->
+
+        <Constraint android:id="@+id/ivRocket">
+
+            <Layout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="1600dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </Constraint>
+
+        <!-- Satellite finished state -->
+
+        <Constraint android:id="@+id/ivSatellite">
+
+            <Layout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </Constraint>
+
+        <!-- Space Background finished state-->
+
+        <Constraint android:id="@+id/bgSpace">
+
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </Constraint>
+
+    </ConstraintSet>
+
+    <!-- Animation transition start/end -->
+
+    <Transition
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="3000">
+
+        <!-- Actions-->
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@+id/viewClickable" />
+
+        <!-- Add some extra transitions during the animation duration -->
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="0"
+                android:scaleX="0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="0"
+                android:scaleY="0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="100"
+                android:scaleX="1.0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="100"
+                android:scaleY="1.0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="0"
+                android:alpha="0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="50"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="50"
+                android:alpha="1.0" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/ivSatellite"
+                app:framePosition="100"
+                android:rotation="95" />
+
+        </KeyFrameSet>
+
+    </Transition>
+
+</MotionScene>
